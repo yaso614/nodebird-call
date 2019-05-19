@@ -5,11 +5,11 @@ const cookieParser = require('cookie-parser');
 const session = require('express-session');
 require('dotenv').config();
 
-const indexRouter = require('./router');
+const indexRouter = require('./routes');
 
 const app = express();
 
-app.set('view', path.join(__dirname, 'views'));
+app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'pug');
 app.set('port', process.env.PORT || 8003);
 
@@ -21,8 +21,8 @@ app.use(session({
   secret: process.env.COOKIE_SECRET,
   cookie: {
     httpOnly: true,
-    secure: false
-  }
+    secure: false,
+  },
 }));
 
 app.use('/', indexRouter);
@@ -33,7 +33,7 @@ app.use((req, res, next) => {
   next(err);
 });
 
-app.use((err, req, res) => {
+app.use((err, req, res, next) => {
   res.locals.message = err.message;
   res.locals.error = req.app.get('env') === 'development' ? err : {};
   res.status(err.status || 500);
@@ -41,6 +41,5 @@ app.use((err, req, res) => {
 });
 
 app.listen(app.get('port'), () => {
-  console.log(app.get('port'), '번 포트에서 대기 중');
+  console.log(app.get('port'), '번 포트에서 대기중');
 });
-

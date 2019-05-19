@@ -1,5 +1,6 @@
 const express = require('express');
-const axiso = require('axios');
+const axios = require('axios');
+
 const router = express.Router();
 
 router.get('/test', async (req, res, next) => {
@@ -16,7 +17,7 @@ router.get('/test', async (req, res, next) => {
     }
     //발급 받은 토큰 테스트
     const result = await axios.get('http://localhost:8002/v1/test', {
-      header: { authorization: req.session.jwt }
+      headers: { authorization: req.session.jwt }
     });
     return res.json(result.data)
   } catch (error) {
