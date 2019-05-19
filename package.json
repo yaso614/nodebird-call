@@ -1,0 +1,31 @@
+{
+  "name": "nodebird-call",
+  "version": "0.0.1",
+  "description": "API call server",
+  "main": "app.js",
+  "scripts": {
+    "start": "nodemon app"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/yaso614/nodebird-call.git"
+  },
+  "author": "heming",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/yaso614/nodebird-call/issues"
+  },
+  "homepage": "https://github.com/yaso614/nodebird-call#readme",
+  "dependencies": {
+    "axios": "^0.18.0",
+    "cookie-parser": "^1.4.4",
+    "dotenv": "^8.0.0",
+    "express": "^4.16.4",
+    "express-session": "^1.16.1",
+    "morgan": "^1.9.1",
+    "pug": "^2.0.3"
+  },
+  "devDependencies": {
+    "nodemon": "^1.19.0"
+  }
+}
